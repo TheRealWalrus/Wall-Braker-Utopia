@@ -41,8 +41,8 @@ class Ball {
     fd.shape = cs;
     // Parameters that affect physics
     fd.density = 1;
-    fd.friction = 0.01;
-    fd.restitution = 0.3;
+    fd.friction = 0;
+    fd.restitution = 1;
 
     // Attach fixture to body
     body.createFixture(fd);

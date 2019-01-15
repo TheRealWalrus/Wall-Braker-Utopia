@@ -3,6 +3,9 @@ import org.jbox2d.collision.shapes.*;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 
+// Kinematic paddle to be implemented
+// collision filtering to be added to aviod collision between two balls
+
 Box2DProcessing box2d;
 ArrayList<Boundary> boundaries = new ArrayList<Boundary>();
 ArrayList<Ball> balls = new ArrayList<Ball>();
@@ -35,16 +38,16 @@ void draw() {
 void setupGame() {
   final float boundaryWeight = 10;
 
-  boundaries.add(new Boundary(0, 0, width, boundaryWeight));
-  boundaries.add(new Boundary(0, 0, boundaryWeight, height));
-  boundaries.add(new Boundary(width - boundaryWeight, 0, boundaryWeight, height));
-  //boundaries.add(new Boundary(0, height - boundaryWeight, width, boundaryWeight));
-  boundaries.add(new Boundary(0, height - boundaryWeight - 20, width, boundaryWeight));
+  boundaries.add(new Boundary(boundaryWeight / 2, height / 2, boundaryWeight, height));
+  boundaries.add(new Boundary(width - boundaryWeight / 2, height / 2, boundaryWeight, height));
+  boundaries.add(new Boundary(width / 2, boundaryWeight / 2, width, boundaryWeight));
+  boundaries.add(new Boundary(width / 2, height - boundaryWeight / 2, width, boundaryWeight));
 }
 
 void initializeWorld() {
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
+  box2d.setGravity(0, 0);
 }
 
 void mouseClicked() {
