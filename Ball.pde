@@ -51,4 +51,13 @@ class Ball {
 
     return body;
   }
+
+  boolean isOffscreen() {
+    Vec2 pos = box2d.getBodyPixelCoord(body);
+    if (pos.y > height + r) {
+      return true;
+    } 
+
+    return false;
+  }
 }
