@@ -12,7 +12,7 @@ class Boundary {
     this.h = h;
 
     BodyDef bd = new BodyDef();
-    bd.type = BodyType.STATIC;
+    bd.type = BodyType.STATIC; //<>//
     Vec2 location = box2d.coordPixelsToWorld(x, y);
     bd.position.set(location);
 

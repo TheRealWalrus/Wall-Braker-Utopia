@@ -1,5 +1,5 @@
 class Ball {
-  float r = 16;
+  float r = 10;
   Body body;
 
   Ball(Vec2 location, Vec2 velocity) {
