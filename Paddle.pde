@@ -25,6 +25,7 @@ class Paddle {
 
     // creates fixture with default values
     body.createFixture(ps, 1);
+    body.setUserData(this);
 
     return body;
   }

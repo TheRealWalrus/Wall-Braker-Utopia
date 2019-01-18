@@ -4,19 +4,27 @@ import org.jbox2d.common.*;
 import org.jbox2d.dynamics.*;
 
 // TODO:
+// beginContact to be implemented
+// a colideable interface might have to be created
+
 // barriers should be shorter to avoid bugs with the physics engine
 // collision filtering to be added to aviod collision between two balls
-// bricks to be added
 // level loader class to be created
+
+// ball collision detection migth have to be set to "bullet"
+// "level" class might have to be implemented
 
 Box2DProcessing box2d;
 Game game;
 boolean debugMode = true;
 boolean p1LeftPressed, p1RightPressed, p1FirePressed, p2LeftPressed, p2RightPressed, p2FirePressed;
 
+
+
 void setup() {
   size(640, 480, P2D);
   box2d = new Box2DProcessing(this);
+  box2d.listenForCollisions();
   game = new Game(1);
 }
 

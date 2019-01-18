@@ -1,4 +1,4 @@
-class Boundary {
+class Boundary { //<>//
   float x;
   float y;
   float w;
@@ -12,7 +12,7 @@ class Boundary {
     this.h = h;
 
     BodyDef bd = new BodyDef();
-    bd.type = BodyType.STATIC; //<>//
+    bd.type = BodyType.STATIC;
     Vec2 location = box2d.coordPixelsToWorld(x, y);
     bd.position.set(location);
 
@@ -29,6 +29,7 @@ class Boundary {
 
     // creates fixture with default values
     body.createFixture(ps, 1);
+    body.setUserData(this);
   }
 
   void display() {

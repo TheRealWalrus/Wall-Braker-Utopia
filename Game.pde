@@ -2,10 +2,13 @@ class Game {
   ArrayList<Boundary> boundaries = new ArrayList<Boundary>();
   ArrayList<Ball> balls = new ArrayList<Ball>();
   ArrayList<Paddle> paddles = new ArrayList<Paddle>();
+  ArrayList<Brick> bricks = new ArrayList<Brick>();
 
   Game(int numberOfPlayers) {
     initializeWorld();
-    setupGame();
+    placeBoundaries();
+    placeBricks();
+    paddles.add(new Paddle(new Vec2(width / 2, height - 50)));
   }
 
   void run() {
@@ -26,6 +29,10 @@ class Game {
 
     for (Paddle paddle : paddles) {
       paddle.display();
+    }
+
+    for (Brick brick : bricks) {
+      brick.display();
     }
   }
 
@@ -51,14 +58,24 @@ class Game {
     box2d.setGravity(0, 0);
   }
 
-  void setupGame() {
+  void placeBoundaries() {
     final float boundaryWeight = 10;
 
     boundaries.add(new Boundary(boundaryWeight / 2, height / 2, boundaryWeight, height));
     boundaries.add(new Boundary(width - boundaryWeight / 2, height / 2, boundaryWeight, height));
     boundaries.add(new Boundary(width / 2, boundaryWeight / 2, width, boundaryWeight));
     //boundaries.add(new Boundary(width / 2, height - boundaryWeight / 2, width, boundaryWeight));
+  }
 
-    paddles.add(new Paddle(new Vec2(width / 2, height - 50)));
+  void placeBricks() {
+    float xoff = 20;
+    float yoff = 20;
+
+    for (int x = 0; x < 10; x++) {
+      for (int y = 0; y < 5; y++) {
+        Vec2 brickLoc = new Vec2(x * (Brick.W + xoff) + 100, y * (Brick.H + yoff) + 60);
+        bricks.add(new Brick(brickLoc));
+      }
+    }
   }
 }
