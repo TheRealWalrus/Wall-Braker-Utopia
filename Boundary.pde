@@ -1,4 +1,4 @@
-class Boundary { //<>//
+class Boundary implements Collidable { //<>//
   float x;
   float y;
   float w;
@@ -36,5 +36,8 @@ class Boundary { //<>//
     rectMode(CENTER);
     fill(255);
     rect(x, y, w, h);
+  }
+
+  void collide(Collidable other) {
   }
 }

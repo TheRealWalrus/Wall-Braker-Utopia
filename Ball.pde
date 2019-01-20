@@ -1,4 +1,4 @@
-class Ball {
+class Ball implements Collidable {
   float r = 10;
   Body body;
 
@@ -55,10 +55,17 @@ class Ball {
 
   boolean isOffscreen() {
     Vec2 pos = box2d.getBodyPixelCoord(body);
-    if (pos.y > height + r) {
+
+    if (pos.y > height + r ||
+      pos.y < -r ||
+      pos.x > width + r ||
+      pos.x < -r) {
       return true;
-    } 
+    }
 
     return false;
+  }
+
+  void collide(Collidable other) {
   }
 }

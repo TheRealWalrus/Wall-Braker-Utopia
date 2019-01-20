@@ -41,6 +41,8 @@ class Game {
       paddle.updateVelocity();
     }
 
+    box2d.step();
+
     for (int i = balls.size() - 1; i >= 0; i--) {
       Ball ball = balls.get(i);
 
@@ -50,12 +52,18 @@ class Game {
       }
     }
 
-    box2d.step();
+    for (int i = bricks.size() - 1; i >= 0; i--) {
+      Brick brick = bricks.get(i);
+
+      if (brick.markForDeletion) {
+        bricks.remove(brick);
+        box2d.destroyBody(brick.body);
+      }
+    }
   }
 
   void initializeWorld() {
-    box2d.createWorld();
-    box2d.setGravity(0, 0);
+
   }
 
   void placeBoundaries() {

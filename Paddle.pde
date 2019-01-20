@@ -1,4 +1,4 @@
-class Paddle {
+class Paddle implements Collidable {
   float w = 90;
   float h = 20;
   float speed = 50;
@@ -57,5 +57,8 @@ class Paddle {
     rect(0, 0, w, h);
     // Let's add a line so we can see the rotation
     popMatrix();
+  }
+
+  void collide(Collidable other) {
   }
 }

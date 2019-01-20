@@ -1,8 +1,9 @@
-class Brick {
+class Brick implements Collidable {
   Vec2 pixelLoc;
   static final float W = 32;
   static final float H = W / 2;
   Body body;
+  boolean markForDeletion;
 
   Brick(Vec2 pixelLoc) {
     this.pixelLoc = pixelLoc;
@@ -40,5 +41,9 @@ class Brick {
     rect(0, 0, W, H);
     // Let's add a line so we can see the rotation
     popMatrix();
+  }
+
+  void collide(Collidable other) {
+    markForDeletion = true;
   }
 }
