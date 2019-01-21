@@ -9,8 +9,6 @@ import org.jbox2d.dynamics.contacts.*;
 
 // TODO:
 
-// better ball offscreen checks
-// size of game objects to be rebalanced according to the original game
 // paddle ball should respawn "connected" to the paddle
 
 // velocity of the ball should be limited
@@ -68,7 +66,7 @@ void mouseClicked() {
 
   Vec2 ballVel = ballLoc.sub(center);
   ballVel.normalize();
-  ballVel.mulLocal(50);
+  ballVel.mulLocal(25);
   ballVel.y *= -1;
 
   game.balls.add(new Ball(ballLoc, ballVel));

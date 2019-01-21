@@ -1,11 +1,16 @@
 class Paddle implements Collidable {
-  float w = 90;
-  float h = 20;
+  float w = 80;
+  float h = 16;
   float speed = 50;
   Body body;
 
   Paddle(Vec2 location) {
     body = makeBody(location);
+  }
+  
+  // TO IMPL
+  void spawnBall() {
+    
   }
 
   Body makeBody(Vec2 pixelLoc) {

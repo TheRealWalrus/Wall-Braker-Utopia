@@ -8,7 +8,7 @@ class Game {
     initializeWorld();
     placeBoundaries();
     placeBricks();
-    paddles.add(new Paddle(new Vec2(width / 2, height - 50)));
+    paddles.add(new Paddle(new Vec2(width / 2, height - 32)));
   }
 
   void run() {
