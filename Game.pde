@@ -63,7 +63,6 @@ class Game {
   }
 
   void initializeWorld() {
-
   }
 
   void placeBoundaries() {
@@ -85,5 +84,25 @@ class Game {
         bricks.add(new Brick(brickLoc));
       }
     }
+  }
+
+  void spawnBall() {
+    int randomIndex = (int) random(paddles.size());
+    Paddle paddle = paddles.get(randomIndex);
+    Vec2 paddleLoc = box2d.getBodyPixelCoord(paddle.body);
+
+    Vec2 ballLoc = new Vec2(paddleLoc.x, paddleLoc.y - Paddle.h / 2 - Ball.r);
+    float r = 20;
+    float theta = PI * 1.5;
+    float x = r * cos(theta);
+    float y = r * sin(theta);
+
+    Vec2 ballVel = new Vec2(x, y);
+    
+    Ball ball = new Ball(ballLoc, ballVel);
+
+    balls.add(ball);
+
+    paddle.attachedBall = ball;
   }
 }

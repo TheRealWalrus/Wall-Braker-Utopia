@@ -4,25 +4,10 @@ class Paddle implements Collidable {
   float speed = 50;
   Body body;
   //boolean serve;
+  Ball attachedBall;
 
   Paddle(Vec2 location) {
     body = makeBody(location);
-  }
-
-  // TO IMPL
-  void spawnBall() {
-    Vec2 paddleLoc = box2d.getBodyPixelCoord(body);
-
-    Vec2 ballLoc = new Vec2(paddleLoc.x, paddleLoc.y - h / 2 - Ball.r);
-
-    float r = 20;
-    float theta = PI * 1.5;
-    float x = r * cos(theta);
-    float y = r * sin(theta);
-
-    Vec2 ballVel = new Vec2(x, y);
-
-    game.balls.add(new Ball(ballLoc, ballVel));
   }
 
   Body makeBody(Vec2 pixelLoc) {

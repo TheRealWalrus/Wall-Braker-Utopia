@@ -1,6 +1,7 @@
 class Ball implements Collidable {
   static final float r = 8;
   Body body;
+  //Paddle attached;
 
   Ball(Vec2 location, Vec2 velocity) {
     body = makeBody(location);

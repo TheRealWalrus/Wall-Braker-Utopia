@@ -61,7 +61,7 @@ void drawDebugLine() {
 
 void mouseClicked() {
   // FOR DEBUGGING
-  
+
   Vec2 center = new Vec2(width / 2, height / 2);
   Vec2 ballLoc = new Vec2(mouseX, mouseY);
   //Vec2 test = new Vec2(0, 0);
@@ -76,10 +76,12 @@ void mouseClicked() {
 
 void keyPressed() {
   setMove(keyCode, true);
-  
+
   // FOR TESTING
   if (keyCode == CONTROL) {
-    game.paddles.get(0).spawnBall();
+    if (game.balls.isEmpty()) {
+      game.spawnBall();
+    }
   }
 }
 

@@ -4,6 +4,7 @@ class Brick implements Collidable {
   static final float H = W / 2;
   Body body;
   boolean markForDeletion;
+ 
 
   Brick(Vec2 pixelLoc) {
     this.pixelLoc = pixelLoc;
