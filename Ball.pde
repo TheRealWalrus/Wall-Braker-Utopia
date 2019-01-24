@@ -1,14 +1,49 @@
 class Ball implements Collidable {
   static final float r = 8;
   Body body;
-  //Paddle attached;
+  Paddle attachedTo;
+  Vec2 location;
+  Vec2 velocity;
 
   Ball(Vec2 location, Vec2 velocity) {
+    this.velocity = velocity;
+    this.location = location;
+  }
+
+  void update() {
+    if (attachedTo != null) {
+      Vec2 paddleLoc = box2d.getBodyPixelCoord(attachedTo.body);
+      location.x = paddleLoc.x;
+      location.y = paddleLoc.y - Paddle.h / 2 - r;
+    }
+  }
+
+  void submitToWorld() {
     body = makeBody(location);
     body.setLinearVelocity(velocity);
+
+    location = null;
+    velocity = null;
+    attachedTo.attachedBall = null;
+    attachedTo = null;
   }
 
   void display() {
+    if (attachedTo == null) {
+      displayWhenSubmitted();
+    } else {
+      displayWhenAttached();
+    }
+  }
+
+  void displayWhenAttached() {
+    pushMatrix();
+    translate(location.x, location.y);
+    drawBall();
+    popMatrix();
+  }
+
+  void displayWhenSubmitted() {
     // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     // Get its angle of rotation
@@ -16,13 +51,17 @@ class Ball implements Collidable {
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(a);
+    drawBall();
+    popMatrix();
+  }
+
+  void drawBall() {
     fill(255, 255, 0);
     stroke(0);
     strokeWeight(1);
     ellipse(0, 0, r*2, r*2);
     // Let's add a line so we can see the rotation
     line(0, 0, r, 0);
-    popMatrix();
   }
 
   Body makeBody(Vec2 pixelLoc) {
@@ -55,6 +94,10 @@ class Ball implements Collidable {
   }
 
   boolean isOffscreen() {
+    if (attachedTo != null) {
+      return false;
+    } 
+
     Vec2 pos = box2d.getBodyPixelCoord(body);
 
     if (pos.y > height + r ||

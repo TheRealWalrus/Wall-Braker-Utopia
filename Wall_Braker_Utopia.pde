@@ -71,18 +71,19 @@ void mouseClicked() {
   ballVel.mulLocal(25);
   ballVel.y *= -1;
 
-  game.balls.add(new Ball(ballLoc, ballVel));
+  Ball ball = new Ball(ballLoc, ballVel);
+  ball.submitToWorld();
+  game.balls.add(ball);
+  
 }
 
 void keyPressed() {
   setMove(keyCode, true);
 
   // FOR TESTING
-  if (keyCode == CONTROL) {
-    if (game.balls.isEmpty()) {
-      game.spawnBall();
-    }
-  }
+  /*if (keyCode == CONTROL) {
+
+  }*/
 }
 
 void keyReleased() {

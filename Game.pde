@@ -13,6 +13,11 @@ class Game {
 
   void run() {
     update();
+
+    if (game.balls.isEmpty()) {
+      game.spawnBall();
+    }
+
     display();
   }
 
@@ -39,6 +44,10 @@ class Game {
   void update() {
     for (Paddle paddle : paddles) {
       paddle.updateVelocity();
+    }
+    
+    for (Ball ball : balls) {
+      ball.update();
     }
 
     box2d.step();
@@ -98,11 +107,12 @@ class Game {
     float y = r * sin(theta);
 
     Vec2 ballVel = new Vec2(x, y);
-    
+
     Ball ball = new Ball(ballLoc, ballVel);
 
     balls.add(ball);
 
     paddle.attachedBall = ball;
+    ball.attachedTo = paddle;
   }
 }

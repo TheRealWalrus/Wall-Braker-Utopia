@@ -44,6 +44,10 @@ class Paddle implements Collidable {
       velocity.x += speed;
     }
 
+    if (p1FirePressed && attachedBall != null) {
+      attachedBall.submitToWorld();
+    }
+
     body.setLinearVelocity(velocity);
   }
 
