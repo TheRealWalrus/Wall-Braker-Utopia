@@ -1,7 +1,7 @@
 class Game {
   ArrayList<Boundary> boundaries = new ArrayList<Boundary>();
-  ArrayList<Ball> balls = new ArrayList<Ball>();
   ArrayList<Paddle> paddles = new ArrayList<Paddle>();
+  ArrayList<Ball> balls = new ArrayList<Ball>();
   ArrayList<Brick> bricks = new ArrayList<Brick>();
 
   Game(int numberOfPlayers) {
@@ -72,6 +72,10 @@ class Game {
   }
 
   void initializeWorld() {
+  }
+  
+  void loadBricks() {
+  
   }
 
   void placeBoundaries() {

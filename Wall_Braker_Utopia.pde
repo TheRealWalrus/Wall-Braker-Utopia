@@ -27,7 +27,7 @@ boolean p1LeftPressed, p1RightPressed, p1FirePressed, p2LeftPressed, p2RightPres
 
 
 void setup() {
-  size(640, 480, P2D);
+  size(660, 480, P2D);
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   box2d.setGravity(0, 0);
