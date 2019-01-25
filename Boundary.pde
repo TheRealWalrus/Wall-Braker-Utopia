@@ -34,7 +34,8 @@ class Boundary implements Collidable { //<>//
 
   void display() {
     rectMode(CENTER);
-    fill(255);
+    fill(180, 130, 50);
+    noStroke();
     rect(x, y, w, h);
   }
 

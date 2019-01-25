@@ -9,15 +9,14 @@ import org.jbox2d.dynamics.contacts.*;
 
 // TODO:
 
-// paddle ball should respawn "connected" to the paddle
+// "Level" class to be added
+// level loader class to be created
 
 // velocity of the ball should be limited
 // barriers should be shorter to avoid bugs with the physics engine
 // collision filtering to be added to aviod collision between two balls
-// level loader class to be created
 
 // ball collision detection migth have to be set to "bullet"
-// "level" class might have to be implemented
 // ball should explode if it has not touched a paddle for a certain amount of time
 
 Box2DProcessing box2d;

@@ -45,12 +45,12 @@ class Game {
     for (Paddle paddle : paddles) {
       paddle.updateVelocity();
     }
-    
+
+    box2d.step();
+
     for (Ball ball : balls) {
       ball.update();
     }
-
-    box2d.step();
 
     for (int i = balls.size() - 1; i >= 0; i--) {
       Ball ball = balls.get(i);

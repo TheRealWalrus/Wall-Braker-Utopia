@@ -24,7 +24,9 @@ class Ball implements Collidable {
 
     location = null;
     velocity = null;
-    attachedTo.attachedBall = null;
+    if (attachedTo != null) {
+      attachedTo.attachedBall = null;
+    }
     attachedTo = null;
   }
 
