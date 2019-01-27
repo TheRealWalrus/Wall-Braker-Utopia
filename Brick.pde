@@ -6,7 +6,7 @@ class Brick implements Collidable {
   boolean markForDeletion;
  
 
-  Brick(Vec2 pixelLoc) {
+  Brick(Vec2 pixelLoc, int type) {
     this.pixelLoc = pixelLoc;
     body = makeBody(pixelLoc);
   }

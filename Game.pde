@@ -5,9 +5,9 @@ class Game {
   ArrayList<Brick> bricks = new ArrayList<Brick>();
 
   Game(int numberOfPlayers) {
-    initializeWorld();
+    //initializeWorld();
     placeBoundaries();
-    placeBricks();
+    bricks = loadBricks(0);
     paddles.add(new Paddle(new Vec2(width / 2, height - 32)));
   }
 
@@ -71,11 +71,26 @@ class Game {
     }
   }
 
-  void initializeWorld() {
-  }
-  
-  void loadBricks() {
-  
+  /*void initializeWorld() {
+   }*/
+
+  ArrayList<Brick> loadBricks(int level) {
+    float distFromCeiling = 50;
+    ArrayList<Brick> bricks = new ArrayList<Brick>();
+    BrickPattern brickPattern = new BrickPattern(); 
+
+    for (int x = 0; x < 20; x++) {
+      for (int y = 0; y < 20; y++) {
+        int blockType = brickPattern.patterns[level][y][x];
+
+        if (blockType != 0) {
+          Vec2 brickLocation = new Vec2(10 + Brick.W / 2 + (x * Brick.W), distFromCeiling + (y * Brick.H));
+          bricks.add(new Brick(brickLocation, blockType));
+        }
+      }
+    }
+
+    return bricks;
   }
 
   void placeBoundaries() {
@@ -87,17 +102,17 @@ class Game {
     //boundaries.add(new Boundary(width / 2, height - boundaryWeight / 2, width, boundaryWeight));
   }
 
-  void placeBricks() {
-    float xoff = 20;
-    float yoff = 20;
-
-    for (int x = 0; x < 10; x++) {
-      for (int y = 0; y < 5; y++) {
-        Vec2 brickLoc = new Vec2(x * (Brick.W + xoff) + 100, y * (Brick.H + yoff) + 60);
-        bricks.add(new Brick(brickLoc));
-      }
-    }
-  }
+  /*void placeBricks() {
+   float xoff = 20;
+   float yoff = 20;
+   
+   for (int x = 0; x < 10; x++) {
+   for (int y = 0; y < 5; y++) {
+   Vec2 brickLoc = new Vec2(x * (Brick.W + xoff) + 100, y * (Brick.H + yoff) + 60);
+   bricks.add(new Brick(brickLoc, 1));
+   }
+   }
+   }*/
 
   void spawnBall() {
     int randomIndex = (int) random(paddles.size());
@@ -106,7 +121,8 @@ class Game {
 
     Vec2 ballLoc = new Vec2(paddleLoc.x, paddleLoc.y - Paddle.h / 2 - Ball.r);
     float r = 20;
-    float theta = PI * 1.5;
+    float spread = 0.15;
+    float theta = random((1.5 - spread) * PI, (1.5 + spread) * PI);
     float x = r * cos(theta);
     float y = r * sin(theta);
 
