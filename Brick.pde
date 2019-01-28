@@ -4,17 +4,25 @@ class Brick implements Collidable {
   static final float H = W / 2;
   Body body;
   boolean markForDeletion;
- 
+  color paint = 255;
 
   Brick(Vec2 pixelLoc, int type) {
     this.pixelLoc = pixelLoc;
     body = makeBody(pixelLoc);
+
+    if (type == 1) {
+      paint = #F98866;
+    } else if (type == 2) {
+      paint = #FF420E;
+    } else if (type == 3) {
+      paint = #80BD9E;
+    } else if (type == 4) {
+      paint = #89DA59;
+    }
   }
 
   Body makeBody(Vec2 pixelLoc) {
-    // Define a body
     BodyDef bd = new BodyDef();
-    // Set its position
 
     bd.position = box2d.coordPixelsToWorld(pixelLoc);
     bd.type = BodyType.STATIC;
@@ -36,11 +44,10 @@ class Brick implements Collidable {
     pushMatrix();
     translate(pos.x, pos.y);
     rectMode(CENTER);
-    fill(0, 255, 0);
+    fill(paint);
     stroke(0);
     strokeWeight(1);
     rect(0, 0, W, H);
-    // Let's add a line so we can see the rotation
     popMatrix();
   }
 

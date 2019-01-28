@@ -3,7 +3,6 @@ class Paddle implements Collidable {
   static final float h = 16;
   float speed = 50;
   Body body;
-  //boolean serve;
   Ball attachedBall;
 
   Paddle(Vec2 location) {
@@ -11,9 +10,7 @@ class Paddle implements Collidable {
   }
 
   Body makeBody(Vec2 pixelLoc) {
-    // Define a body
     BodyDef bd = new BodyDef();
-    // Set its position
 
     bd.position = box2d.coordPixelsToWorld(pixelLoc);
     bd.fixedRotation = true;
@@ -25,7 +22,6 @@ class Paddle implements Collidable {
     float box2Dh = box2d.scalarPixelsToWorld(h / 2);
     ps.setAsBox(box2Dw, box2Dh);
 
-    // creates fixture with default values
     body.createFixture(ps, 1);
     body.setUserData(this);
 
@@ -52,7 +48,6 @@ class Paddle implements Collidable {
   }
 
   void display() {
-    // We look at each body and get its screen position
     Vec2 pos = box2d.getBodyPixelCoord(body);
     pushMatrix();
     translate(pos.x, pos.y);
@@ -61,7 +56,6 @@ class Paddle implements Collidable {
     stroke(0);
     strokeWeight(1);
     rect(0, 0, w, h);
-    // Let's add a line so we can see the rotation
     popMatrix();
   }
 

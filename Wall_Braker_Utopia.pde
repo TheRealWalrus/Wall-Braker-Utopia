@@ -58,12 +58,10 @@ void drawDebugLine() {
   line(center.x, center.y, ballLoc.x, ballLoc.y);
 }
 
+// FOR DEBUGGING
 void mouseClicked() {
-  // FOR DEBUGGING
-
   Vec2 center = new Vec2(width / 2, height / 2);
   Vec2 ballLoc = new Vec2(mouseX, mouseY);
-  //Vec2 test = new Vec2(0, 0);
 
   Vec2 ballVel = ballLoc.sub(center);
   ballVel.normalize();
@@ -78,11 +76,6 @@ void mouseClicked() {
 
 void keyPressed() {
   setMove(keyCode, true);
-
-  // FOR TESTING
-  /*if (keyCode == CONTROL) {
-
-  }*/
 }
 
 void keyReleased() {

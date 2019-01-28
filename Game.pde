@@ -5,9 +5,8 @@ class Game {
   ArrayList<Brick> bricks = new ArrayList<Brick>();
 
   Game(int numberOfPlayers) {
-    //initializeWorld();
     placeBoundaries();
-    bricks = loadBricks(0);
+    bricks = loadBricks(1);
     paddles.add(new Paddle(new Vec2(width / 2, height - 32)));
   }
 
@@ -71,9 +70,6 @@ class Game {
     }
   }
 
-  /*void initializeWorld() {
-   }*/
-
   ArrayList<Brick> loadBricks(int level) {
     float distFromCeiling = 50;
     ArrayList<Brick> bricks = new ArrayList<Brick>();
@@ -101,18 +97,6 @@ class Game {
     boundaries.add(new Boundary(width / 2, boundaryWeight / 2, width, boundaryWeight));
     //boundaries.add(new Boundary(width / 2, height - boundaryWeight / 2, width, boundaryWeight));
   }
-
-  /*void placeBricks() {
-   float xoff = 20;
-   float yoff = 20;
-   
-   for (int x = 0; x < 10; x++) {
-   for (int y = 0; y < 5; y++) {
-   Vec2 brickLoc = new Vec2(x * (Brick.W + xoff) + 100, y * (Brick.H + yoff) + 60);
-   bricks.add(new Brick(brickLoc, 1));
-   }
-   }
-   }*/
 
   void spawnBall() {
     int randomIndex = (int) random(paddles.size());

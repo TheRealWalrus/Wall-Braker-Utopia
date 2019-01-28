@@ -16,11 +16,7 @@ class Boundary implements Collidable { //<>//
     Vec2 location = box2d.coordPixelsToWorld(x, y);
     bd.position.set(location);
 
-    // dampening might have to be added
-
     body = box2d.createBody(bd);
-
-    // velocity is probably not needed
 
     PolygonShape ps = new PolygonShape();
     float box2Dw = box2d.scalarPixelsToWorld(w / 2);
